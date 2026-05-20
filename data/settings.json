@@ -1,0 +1,14 @@
+{
+  "siteName": "QSpace",
+  "siteDescription": "一个关于技术、编程与生活的个人博客",
+  "authorName": "博客作者",
+  "authorBio": "全栈开发者，热爱开源与技术分享。专注于 Web 开发、系统设计和用户体验。",
+  "authorAvatar": "",
+  "socialLinks": {
+    "github": "https://github.com",
+    "twitter": "https://twitter.com",
+    "email": "hello@example.com"
+  },
+  "adminPassword": "$2a$10$placeholder",
+  "adminUsername": "admin"
+}

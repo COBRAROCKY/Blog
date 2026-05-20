@@ -48,8 +48,4 @@ export async function getSession(): Promise<boolean> {
   return verifyToken(token)
 }
 
-export function setAuthCookie(token: string): void {
-  // This will be handled in the API route
-}
-
 export const AUTH_COOKIE_NAME = TOKEN_NAME

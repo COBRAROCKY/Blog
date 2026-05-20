@@ -4,7 +4,7 @@ import { useState, useMemo } from "react"
 import { PostCard } from "@/components/blog/PostCard"
 import { SearchBar } from "@/components/blog/SearchBar"
 import { TagCloud } from "@/components/blog/TagCloud"
-import { getPosts, getAllTags, getCategories, searchPosts, type Post } from "@/lib/db"
+import { type Post } from "@/lib/db"
 
 // Note: We're using the db functions directly but since this needs to work on client,
 // we'll use a server-data approach. For now, let me adjust.

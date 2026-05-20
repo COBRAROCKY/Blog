@@ -1,12 +1,13 @@
 import { cn } from "@/lib/utils"
+import * as React from "react"
 
-interface BadgeProps {
+interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
   children: React.ReactNode
   variant?: "default" | "primary" | "accent" | "outline"
   className?: string
 }
 
-export function Badge({ children, variant = "default", className }: BadgeProps) {
+export function Badge({ children, variant = "default", className, ...props }: BadgeProps) {
   const variants = {
     default: "bg-muted text-muted-foreground",
     primary: "bg-primary/10 text-primary border-primary/30",
@@ -21,6 +22,7 @@ export function Badge({ children, variant = "default", className }: BadgeProps) 
         variants[variant],
         className
       )}
+      {...props}
     >
       {children}
     </span>

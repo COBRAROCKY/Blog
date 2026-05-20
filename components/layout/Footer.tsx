@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Github, Twitter, Mail, Heart } from "lucide-react"
+import { GitBranch, Send, Mail, Heart } from "lucide-react"
 
 export function Footer() {
   return (
@@ -53,7 +53,7 @@ export function Footer() {
                 rel="noopener noreferrer"
                 className="w-9 h-9 flex items-center justify-center rounded-lg bg-muted text-muted-foreground hover:text-foreground hover:bg-primary/10 hover:text-primary transition-all duration-300"
               >
-                <Github className="w-4 h-4" />
+                <GitBranch className="w-4 h-4" />
               </a>
               <a
                 href="https://twitter.com"
@@ -61,7 +61,7 @@ export function Footer() {
                 rel="noopener noreferrer"
                 className="w-9 h-9 flex items-center justify-center rounded-lg bg-muted text-muted-foreground hover:text-foreground hover:bg-primary/10 hover:text-primary transition-all duration-300"
               >
-                <Twitter className="w-4 h-4" />
+                <Send className="w-4 h-4" />
               </a>
               <a
                 href="mailto:hello@example.com"
