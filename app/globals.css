@@ -1,0 +1,192 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Dark modern palette */
+    --background: 240 10% 3.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 240 10% 6%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 240 10% 8%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 217 91% 60%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 240 5% 15%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 240 5% 12%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 170 80% 45%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 50%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 240 5% 20%;
+    --input: 240 5% 15%;
+    --ring: 217 91% 60%;
+
+    --radius: 0.75rem;
+
+    /* Gradient tokens */
+    --gradient-primary: linear-gradient(135deg, hsl(217 91% 60%), hsl(230 85% 70%));
+    --gradient-accent: linear-gradient(135deg, hsl(217 91% 60%), hsl(170 80% 45%));
+    --gradient-hero: linear-gradient(180deg, hsl(240 10% 3.9%) 0%, hsl(240 15% 8%) 50%, hsl(240 10% 3.9%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(240 10% 8% / 0.8), hsl(240 10% 5% / 0.9));
+
+    /* Shadow tokens with primary color */
+    --shadow-glow: 0 0 30px hsl(217 91% 60% / 0.3);
+    --shadow-glow-strong: 0 0 60px hsl(217 91% 60% / 0.5);
+    --shadow-card: 0 1px 3px hsl(0 0% 0% / 0.5), 0 4px 12px hsl(0 0% 0% / 0.3);
+    --shadow-elevated: 0 8px 30px hsl(0 0% 0% / 0.5);
+
+    /* Glass */
+    --glass-bg: hsl(240 10% 8% / 0.6);
+    --glass-border: hsl(240 5% 20% / 0.5);
+    --glass-blur: 12px;
+
+    /* Transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--background));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--muted));
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--muted-foreground));
+  }
+}
+
+@layer components {
+  /* Gradient text utility */
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-accent);
+  }
+
+  /* Glass card effect */
+  .glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+  }
+
+  /* Glowing border */
+  .glow-border {
+    position: relative;
+  }
+
+  .glow-border::after {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: var(--gradient-accent);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    -webkit-mask-composite: xor;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .glow-border:hover::after {
+    opacity: 1;
+  }
+
+  /* Prose override for markdown content */
+  .prose-blog {
+    @apply text-foreground leading-relaxed;
+  }
+
+  .prose-blog h1,
+  .prose-blog h2,
+  .prose-blog h3,
+  .prose-blog h4 {
+    @apply text-foreground font-bold mt-8 mb-4;
+  }
+
+  .prose-blog h1 { @apply text-3xl; }
+  .prose-blog h2 { @apply text-2xl; }
+  .prose-blog h3 { @apply text-xl; }
+
+  .prose-blog p {
+    @apply my-4 leading-relaxed text-muted-foreground;
+  }
+
+  .prose-blog a {
+    @apply text-[hsl(var(--primary))] underline underline-offset-4 hover:text-[hsl(var(--accent))] transition-colors;
+  }
+
+  .prose-blog ul, .prose-blog ol {
+    @apply my-4 pl-6 text-muted-foreground;
+  }
+
+  .prose-blog li {
+    @apply my-1;
+  }
+
+  .prose-blog blockquote {
+    @apply border-l-2 border-[hsl(var(--primary))] pl-4 my-4 italic text-muted-foreground;
+  }
+
+  .prose-blog code {
+    @apply bg-muted px-1.5 py-0.5 rounded text-sm font-mono text-[hsl(var(--accent))];
+  }
+
+  .prose-blog pre {
+    @apply bg-muted rounded-lg p-4 my-4 overflow-x-auto;
+  }
+
+  .prose-blog pre code {
+    @apply bg-transparent p-0 text-foreground;
+  }
+
+  .prose-blog img {
+    @apply rounded-lg my-6 max-w-full;
+  }
+
+  .prose-blog hr {
+    @apply border-border my-8;
+  }
+
+  .prose-blog table {
+    @apply w-full my-4 border-collapse;
+  }
+
+  .prose-blog th, .prose-blog td {
+    @apply border border-border px-4 py-2 text-left;
+  }
+
+  .prose-blog th {
+    @apply bg-muted font-semibold;
+  }
+}
